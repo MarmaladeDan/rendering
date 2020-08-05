@@ -24,7 +24,7 @@ export default async (req, res) => {
   ];
 
   try {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ product: "firefox" });
     const page = await browser.newPage();
     await page.setCookie(...cookies);
     await page.setViewport({ width, height: 812, deviceScaleFactor: 1 });
