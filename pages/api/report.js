@@ -1,6 +1,5 @@
 import { args, executablePath, headless } from "chrome-aws-lambda";
-import puppeteer from "puppeteer";
-import puppeteerCore from "puppeteer-core";
+import puppeteer from "puppeteer-core";
 
 const getTLD = (url) => `.${url.split(".").slice(-3).join(".").split("/")[0]}`;
 
@@ -25,15 +24,20 @@ export default async (req, res) => {
     },
   ];
 
+  const launchArgs =
+    process.env.NODE_ENV !== "production"
+      ? {
+          executablePath:
+            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        }
+      : {
+          args,
+          executablePath: await executablePath,
+          headless,
+        };
+
   try {
-    const browser =
-      process.env.NODE_ENV !== "production"
-        ? await puppeteer.launch()
-        : await puppeteerCore.launch({
-            args,
-            executablePath: await executablePath,
-            headless,
-          });
+    const browser = await puppeteer.launch(launchArgs);
     const page = await browser.newPage();
     await page.setCookie(...cookies);
     await page.setViewport({ width, height: 812, deviceScaleFactor: 1 });
