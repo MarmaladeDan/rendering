@@ -1,9 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "pages/api/report.js", "use": "@now/node" },
-    { "src": "pages/api/sites.js", "use": "@now/node" }
-  ],
   "routes": [
     { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
     { "src": "/api/report", "dest": "/pages/api/report.js" },
