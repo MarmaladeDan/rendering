@@ -1,8 +1,0 @@
-{
-  "version": 2,
-  "routes": [
-    { "src": "/favicon.ico", "dest": "/public/favicon.ico" },
-    { "src": "/api/report", "dest": "/pages/api/report.js" },
-    { "src": "/api/sites", "dest": "/pages/api/sites.js" }
-  ]
-}
