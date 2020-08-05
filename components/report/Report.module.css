@@ -11,3 +11,37 @@
 .report span {
   font-size: 24px;
 }
+
+.link {
+  padding: 1rem;
+  color: #e9511e;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tab {
+  flex: 1;
+  padding: 1rem;
+  text-align: center;
+  background-color: #ddd;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.tab:nth-child(2) {
+  border-left: 1px solid #aaa;
+  border-right: 1px solid #aaa;
+}
+
+.active {
+  background-color: #e9511e;
+  color: #fff;
+}
+
+.image {
+  max-width: 100%;
+}

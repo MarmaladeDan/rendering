@@ -2,6 +2,7 @@ import Head from "next/head";
 import { useState } from "react";
 import axios from "axios";
 import Report from "../components/report";
+import Loading from "../components/loading";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -18,7 +19,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Marmalade | Rendering</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
