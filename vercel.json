@@ -2,8 +2,8 @@
   "version": 2,
   "builds": [
     { "src": "public/*", "use": "@vercel/static" },
-    { "src": "/pages/api/report.js", "use": "@vercel/node" },
-    { "src": "/pages/api/sites.js", "use": "@vercel/node" }
+    { "src": "pages/api/report.js", "use": "@vercel/node" },
+    { "src": "pages/api/sites.js", "use": "@vercel/node" }
   ],
   "routes": [
     { "src": "/", "dest": "/public/index.html" },
