@@ -2,7 +2,6 @@ import Head from "next/head";
 import { useState } from "react";
 import axios from "axios";
 import Report from "../components/report";
-import Loading from "../components/loading";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
