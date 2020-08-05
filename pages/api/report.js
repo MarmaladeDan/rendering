@@ -42,7 +42,6 @@ export default async (req, res) => {
     await page.setCookie(...cookies);
     await page.setViewport({ width, height: 812, deviceScaleFactor: 1 });
     await page.goto(url);
-    // await page.waitFor(1000);
     const image = await page.screenshot({
       fullPage: true,
       encoding: "base64",

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { parseString } from "xml2js";
-import { NextApiRequest } from "next";
 
 export default async (req, res) => {
   const {
