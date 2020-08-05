@@ -27,7 +27,7 @@ export default function Home() {
         <input
           className={styles.input}
           type="text"
-          placeholder="e.g. https://www.wearemarmalade.co.uk/"
+          placeholder="e.g. https://www.google.co.uk/"
           value={site}
           onChange={(e) => setSite(e.target.value)}
         />
