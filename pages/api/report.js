@@ -1,4 +1,6 @@
+import { args, executablePath, headless } from "chrome-aws-lambda";
 import puppeteer from "puppeteer";
+import puppeteerCore from "puppeteer-core";
 
 const getTLD = (url) => `.${url.split(".").slice(-3).join(".").split("/")[0]}`;
 
@@ -24,7 +26,14 @@ export default async (req, res) => {
   ];
 
   try {
-    const browser = await puppeteer.launch({ product: "firefox" });
+    const browser =
+      process.env.NODE_ENV !== "production"
+        ? await puppeteer.launch()
+        : await puppeteerCore.launch({
+            args,
+            executablePath: await executablePath,
+            headless,
+          });
     const page = await browser.newPage();
     await page.setCookie(...cookies);
     await page.setViewport({ width, height: 812, deviceScaleFactor: 1 });
