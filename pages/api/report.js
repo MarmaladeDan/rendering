@@ -1,5 +1,4 @@
-import { args, executablePath, headless } from "chrome-aws-lambda";
-import puppeteer from "puppeteer-core";
+import puppeteer from "puppeteer";
 
 const getTLD = (url) => `.${url.split(".").slice(-3).join(".").split("/")[0]}`;
 
@@ -24,14 +23,8 @@ export default async (req, res) => {
     },
   ];
 
-  const launchArgs = {
-    args,
-    executablePath: await executablePath,
-    headless,
-  };
-
   try {
-    const browser = await puppeteer.launch(launchArgs);
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setCookie(...cookies);
     await page.setViewport({ width, height: 812, deviceScaleFactor: 1 });
@@ -46,6 +39,6 @@ export default async (req, res) => {
     res.send({ [index]: image });
   } catch (error) {
     res.statusCode = 500;
-    res.send({ error: error.message, args, executablePath, headless });
+    res.send(error.message);
   }
 };
