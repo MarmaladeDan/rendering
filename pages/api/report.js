@@ -24,17 +24,11 @@ export default async (req, res) => {
     },
   ];
 
-  const launchArgs =
-    process.env.NODE_ENV !== "production"
-      ? {
-          executablePath:
-            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-        }
-      : {
-          args,
-          executablePath: await executablePath,
-          headless,
-        };
+  const launchArgs = {
+    args,
+    executablePath: await executablePath,
+    headless,
+  };
 
   try {
     const browser = await puppeteer.launch(launchArgs);
@@ -52,6 +46,6 @@ export default async (req, res) => {
     res.send({ [index]: image });
   } catch (error) {
     res.statusCode = 500;
-    res.send(error.message);
+    res.send({ error: error.message, args, executablePath, headless });
   }
 };
